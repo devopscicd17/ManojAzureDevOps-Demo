@@ -15,13 +15,14 @@ steps:
 
 
 
+
 # Step 2: Run OWASP ZAP Container
 - task: Bash@3
   displayName: 'Run OWASP ZAP Scan'
   inputs:
     targetType: 'inline'
     script: |
-      docker run -v $(System.DefaultWorkingDirectory):/zap/wrk/:rw owasp/zap2docker-stable zap-baseline.py \
+       docker run --rm -v $(System.DefaultWorkingDirectory):/zap/wrk/:rw ghcr.io/zaproxy/zaproxy:stable zap-baseline.py \
         -t https://demo.testfire.net \
         -r zap_report.html \
         -J zap_report.json
