@@ -22,10 +22,13 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-       docker run --rm -v $(System.DefaultWorkingDirectory):/zap/wrk/:rw ghcr.io/zaproxy/zaproxy:stable zap-baseline.py \
+      chmod -R 777 $(System.DefaultWorkingDirectory)
+      docker run --rm -v $(System.DefaultWorkingDirectory):/zap/wrk/:rw ghcr.io/zaproxy/zaproxy:stable zap-baseline.py \
         -t https://demo.testfire.net \
         -r zap_report.html \
-        -J zap_report.json
+        -J zap_report.json \
+        --debug
+
 
 # Step 3: Publish OWASP ZAP Report
 - task: PublishPipelineArtifact@1
