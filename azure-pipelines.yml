@@ -11,7 +11,8 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      docker pull zaproxy/zap-stable
+      docker pull owasp/zap2docker-stable:2.13.0
+
 
 # Step 2: Run OWASP ZAP Container
 - task: Bash@3
