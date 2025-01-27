@@ -27,7 +27,7 @@ steps:
         -t https://demo.testfire.net \
         -r zap_report.html \
         -J zap_report.json \
-        --debug
+        
 
 
 # Step 3: Publish OWASP ZAP Report
